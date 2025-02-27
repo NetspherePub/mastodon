@@ -28,7 +28,7 @@ class StatusesIndex < Chewy::Index
       },
 
       content: {
-        tokenizer: 'standard',
+        tokenizer: 'nori_tokenizer_mixed',
         filter: %w(
           lowercase
           asciifolding
@@ -48,6 +48,15 @@ class StatusesIndex < Chewy::Index
           asciifolding
           cjk_width
         ),
+      },
+    },
+    
+    tokenizer: {
+      nori_tokenizer_mixed: {
+        # https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-tokenizer.html
+        type: 'nori_tokenizer',
+        decompound_mode: 'mixed',
+        discard_punctuation: 'true',
       },
     },
   }
