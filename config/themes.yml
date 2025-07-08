@@ -3,7 +3,6 @@ contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
 bird-ui-dark: styles/bird-ui-dark.scss
 bird-ui-contrast: styles/bird-ui-contrast.scss
-bird-ui-light: styles/bird-ui-light.scss
 tangerineui: styles/tangerineui.scss
 tangerineui-purple: styles/tangerineui-purple.scss
 tangerineui-cherry: styles/tangerineui-cherry.scss
