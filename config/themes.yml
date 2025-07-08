@@ -2,6 +2,6 @@ default: styles/application.scss
 contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
 tangerineui: styles/tangerineui.scss
-# tangerineui-purple: styles/tangerineui-purple.scss
-# tangerineui-cherry: styles/tangerineui-cherry.scss
-# tangerineui-lagoon: styles/tangerineui-lagoon.scss
+tangerineui-purple: styles/tangerineui-purple.scss
+tangerineui-cherry: styles/tangerineui-cherry.scss
+tangerineui-lagoon: styles/tangerineui-lagoon.scss
