@@ -30,6 +30,8 @@ class PublicStatusesIndex < Chewy::Index
       content: {
         tokenizer: 'nori_tokenizer_mixed',
         filter: %w(
+          nori_part_of_speech
+          nori_readingform
           lowercase
           asciifolding
           cjk_width
