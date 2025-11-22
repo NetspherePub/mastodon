@@ -30,6 +30,11 @@ class StatusesIndex < Chewy::Index
       content: {
         tokenizer: 'nori_tokenizer_mixed',
         filter: %w(
+<<<<<<< HEAD
+=======
+          nori_part_of_speech
+          nori_readingform
+>>>>>>> 4bcef3e253 (냠냠)
           lowercase
           asciifolding
           cjk_width
