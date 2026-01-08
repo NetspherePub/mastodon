@@ -1,0 +1,43 @@
+@font-face {
+  font-family: mastodon-font-sans-serif;
+  src:
+    local('Noto Sans KR'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Regular.woff2') format('woff2'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: mastodon-font-sans-serif;
+  src:
+    local('Noto Sans KR Bold'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Bold.woff2') format('woff2'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: mastodon-font-sans-serif;
+  src:
+    local('Noto Sans KR Medium'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Medium.woff2') format('woff2'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: mastodon-font-sans-serif;
+  src:
+    local('Noto Sans KR'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Regular.woff2') format('woff2'),
+    url('@/fonts/noto-sans-kr/NotoSansKR-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+}
