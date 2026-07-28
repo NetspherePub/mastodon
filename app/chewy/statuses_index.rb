@@ -19,6 +19,28 @@ class StatusesIndex < Chewy::Index
         type: 'stemmer',
         language: 'possessive_english',
       },
+
+      korean_pos: {
+        type: 'nori_part_of_speech',
+        # Preserve semantic modifiers and prefixes (MAG, MM, XPN).
+        stoptags: %w(
+          E
+          IC
+          J
+          MAJ
+          SP
+          SSC
+          SSO
+          SC
+          SE
+          XSA
+          XSN
+          XSV
+          UNA
+          NA
+          VSV
+        ),
+      },
     },
 
     analyzer: {
@@ -40,6 +62,15 @@ class StatusesIndex < Chewy::Index
         ),
       },
 
+      korean: {
+        tokenizer: 'nori_tokenizer_mixed',
+        filter: %w(
+          korean_pos
+          nori_readingform
+          lowercase
+        ),
+      },
+
       hashtag: {
         tokenizer: 'keyword',
         filter: %w(
@@ -50,6 +81,15 @@ class StatusesIndex < Chewy::Index
         ),
       },
     },
+
+    tokenizer: {
+      nori_tokenizer_mixed: {
+        # https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-tokenizer.html
+        type: 'nori_tokenizer',
+        decompound_mode: 'mixed',
+        discard_punctuation: 'true',
+      },
+    },
   }
 
   index_scope ::Status.unscoped.kept.without_reblogs.includes(:media_attachments, :local_mentioned, :local_favorited, :local_reblogged, :local_bookmarked, :tags, preview_cards_status: :preview_card, preloadable_poll: :local_voters), delete_if: ->(status) { status.searchable_by.empty? }
@@ -58,6 +98,7 @@ class StatusesIndex < Chewy::Index
     field(:id, type: 'long')
     field(:account_id, type: 'long')
     field(:text, type: 'text', analyzer: 'verbatim', value: ->(status) { status.searchable_text }) { field(:stemmed, type: 'text', analyzer: 'content') }
+    field(:text_ko, type: 'text', analyzer: 'korean', value: ->(status) { status.searchable_text if status.language.to_s.match?(/\A(?:ko|kor)(?:[-_].+)?\z/i) })
     field(:tags, type: 'text', analyzer: 'hashtag',  value: ->(status) { status.tags.map(&:display_name) })
     field(:searchable_by, type: 'long', value: ->(status) { status.searchable_by })
     field(:language, type: 'keyword')
