@@ -1,1 +1,2 @@
 default: styles/application.scss
+mastodon-bird-ui-auto: styles/mastodon-bird-ui-auto.scss
