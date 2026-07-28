@@ -125,7 +125,7 @@ class SearchQueryTransformer < Parslet::Transform
       if @term.start_with?('#')
         { match: { tags: { query: @term, operator: 'and' } } }
       else
-        { multi_match: { type: 'most_fields', query: @term, fields: ['text', 'text.stemmed', 'text_ko'], operator: 'and' } }
+        { multi_match: { type: 'most_fields', query: @term, fields: ['text', 'text.stemmed'], operator: 'and' } }
       end
     end
   end
@@ -139,15 +139,7 @@ class SearchQueryTransformer < Parslet::Transform
     end
 
     def to_query
-      {
-        bool: {
-          should: [
-            { match_phrase: { text: { query: @phrase } } },
-            { match_phrase: { text_ko: { query: @phrase } } },
-          ],
-          minimum_should_match: 1,
-        },
-      }
+      { match_phrase: { text: { query: @phrase } } }
     end
   end
 
